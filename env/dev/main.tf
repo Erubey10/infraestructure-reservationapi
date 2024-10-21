@@ -19,4 +19,7 @@ module "dev_vm" {
   MAIL_USER                  = var.MAIL_USER
   PORT                       = var.PORT
   MONGO_URL                  = var.MONGO_URL
+  
 }
+
+//prueba 
