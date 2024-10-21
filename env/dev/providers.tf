@@ -2,7 +2,7 @@ terraform {
   backend "azurerm" {
     resource_group_name  = "NetworkWatcherRG"
     storage_account_name = "711cristian"
-    container_name       = "711-74576-tfstate"
+    container_name       = "711-gallarditas-tfstate"
     key                  = "terraform.tfstate"
   }
 
