@@ -191,7 +191,7 @@ resource "null_resource" "init_docker" {
 resource "null_resource" "servEmilio" {
   depends_on = [time_sleep.wait_120_seconds]
   provisioner "remote-exec" {
-    inline = ["sudo su -c 'mkdir -p /home/gonzalez/'"]
+    inline = ["sudo su -c 'mkdir -p /home/gonzalez/'",]
   }
   connection {
     type        = "ssh"
@@ -200,3 +200,17 @@ resource "null_resource" "servEmilio" {
     host        = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }
+
+resource "null_resource" "Erick" {
+  depends_on = [time_sleep.wait_120_seconds]
+  provisioner "remote-exec" {
+    inline = ["sudo su -c 'touch /home/gonzalez/romo.txt'"]
+  }
+  connection {
+    type        = "ssh"
+    user        = "${var.admin_username}"
+    private_key = file("./keys/711monkeypox_server")
+    host        = azurerm_linux_virtual_machine.IN_VM.public_ip_address
+  }
+}
+
