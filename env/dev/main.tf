@@ -28,5 +28,5 @@ resource "azurerm_resource_group" "romero" {
 }
 
 output "print" {
-  value = dev_vm.MonkeypoxIP
+  value = module.dev_vm.MonkeypoxIP
 }
