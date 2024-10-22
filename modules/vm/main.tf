@@ -57,6 +57,9 @@ resource "azurerm_network_security_group" "IN_SG" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+
+
 }
 
 # Cerar asociación entre subnet y security group
@@ -144,6 +147,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
       "sudo su -c 'echo \"MONGO_INITDB_ROOT_USERNAME=${var.MONGO_INITDB_ROOT_USERNAME}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"MONGO_INITDB_ROOT_PASSWORD=${var.MONGO_INITDB_ROOT_PASSWORD}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"DOMAIN=${var.DOMAIN}\" >> /home/${var.admin_username}/.env'",
+      
     ]
     connection {
       type        = "ssh"
