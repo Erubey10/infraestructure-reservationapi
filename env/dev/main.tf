@@ -22,4 +22,4 @@ module "dev_vm" {
 
 }
 
-//prueba 6 jaja
+//prueba levantar infra
