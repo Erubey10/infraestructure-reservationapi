@@ -26,3 +26,7 @@ resource "azurerm_resource_group" "romero" {
   name     = "romero"
   location =  "eastus2"
 }
+
+output "print" {
+  value = dev_vm.MonkeypoxIP
+}
