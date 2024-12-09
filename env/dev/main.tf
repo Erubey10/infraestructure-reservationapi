@@ -31,4 +31,4 @@ output "print" {
   value = module.dev_vm.ReservationsIP
 }
 
-//prueba5
+//prueba6
