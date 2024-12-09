@@ -2,7 +2,7 @@ name: Deploy Dev Infrastructure
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - 'env/dev/**'
             - 'modules/**'
