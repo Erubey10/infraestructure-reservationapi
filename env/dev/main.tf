@@ -30,3 +30,5 @@ resource "azurerm_resource_group" "romero" {
 output "print" {
   value = module.dev_vm.ReservationsIP
 }
+
+//prueba
