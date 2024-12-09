@@ -28,6 +28,9 @@ variable "admin_username" {
 variable "MONGO_URL"{
     type = string
 }
+variable "MONGO_URL_DOCKER"{
+    type = string
+}
 variable "PORT"{
     type = string
 }

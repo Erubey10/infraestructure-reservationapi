@@ -124,7 +124,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
 
   admin_ssh_key {
     username   = "${var.admin_username}"
-    public_key = file("./keys/711monkeypox_server.pub")
+    public_key = file("./keys/711reservations_server.pub")
   }
 
   provisioner "file" {
@@ -134,7 +134,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
     connection {
       type        = "ssh"
       user        = "${var.admin_username}"
-      private_key = file("./keys/711monkeypox_server")
+      private_key = file("./keys/711reservations_server")
       host        = self.public_ip_address
     }
   }
@@ -149,6 +149,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
       "sudo su -c 'chmod 770 /volumes/mongo/data'",
       "sudo su -c 'touch /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"MONGO_URL=${var.MONGO_URL}\" >> /home/${var.admin_username}/.env '",
+      "sudo su -c 'echo \"MONGO_URL_DOCKER=${var.MONGO_URL_DOCKER}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"PORT=${var.PORT}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"MONGO_DB=${var.MONGO_DB}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"MAIL_SECRET_KEY=${var.MAIL_SECRET_KEY}\" >> /home/${var.admin_username}/.env'",
@@ -158,12 +159,11 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
       "sudo su -c 'echo \"MONGO_INITDB_ROOT_USERNAME=${var.MONGO_INITDB_ROOT_USERNAME}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"MONGO_INITDB_ROOT_PASSWORD=${var.MONGO_INITDB_ROOT_PASSWORD}\" >> /home/${var.admin_username}/.env'",
       "sudo su -c 'echo \"DOMAIN=${var.DOMAIN}\" >> /home/${var.admin_username}/.env'",
-      
     ]
     connection {
       type        = "ssh"
       user        = "${var.admin_username}"
-      private_key = file("./keys/711monkeypox_server")
+      private_key = file("./keys/711reservations_server")
       host        = self.public_ip_address
     }
   }
@@ -183,7 +183,7 @@ resource "null_resource" "init_docker" {
   connection {
     type        = "ssh"
     user        = "${var.admin_username}"
-    private_key = file("./keys/711monkeypox_server")
+    private_key = file("./keys/711reservations_server")
     host        = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }
@@ -196,7 +196,7 @@ resource "null_resource" "servEmilio" {
   connection {
     type        = "ssh"
     user        = "${var.admin_username}"
-    private_key = file("./keys/711monkeypox_server")
+    private_key = file("./keys/711reservations_server")
     host        = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }
@@ -209,7 +209,7 @@ resource "null_resource" "Erick" {
   connection {
     type        = "ssh"
     user        = "${var.admin_username}"
-    private_key = file("./keys/711monkeypox_server")
+    private_key = file("./keys/711reservations_server")
     host        = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }

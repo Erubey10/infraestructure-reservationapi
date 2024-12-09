@@ -28,16 +28,17 @@ services:
       - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
  
-  monkeypox-api:
-      image: enemyemy01/monkey-pox-api:latest
-      container_name: monkey-pox-api
+  reservations-api:
+      image: enemyemy01/img_back_reserv:latest
+      container_name: reservations-api
       expose:
         - "3000"
       depends_on:
         - mongo
       environment:
-        MONGO_URL: ${MONGO_URL}
         PORT: ${PORT}
+        MONGO_URL: ${MONGO_URL}
+        MONGO_URL_DOCKER: ${MONGO_URL_DOCKER}
         MONGO_DB: ${MONGO_DB}
         MAILER_ACCESS_TOKEN: ${MAIL_SECRET_KEY}
         MAILER_SERVICE: ${MAIL_SERVICE}

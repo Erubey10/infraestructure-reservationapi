@@ -19,14 +19,14 @@ module "dev_vm" {
   MAIL_USER                  = var.MAIL_USER
   PORT                       = var.PORT
   MONGO_URL                  = var.MONGO_URL
-
+  MONGO_URL_DOCKER           = var.MONGO_URL_DOCKER
 }
 
 resource "azurerm_resource_group" "romero" {
   name     = "romero"
-  location =  "eastus2"
+  location = "eastus2"
 }
 
 output "print" {
-  value = module.dev_vm.MonkeypoxIP
+  value = module.dev_vm.ReservationsIP
 }
